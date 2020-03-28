@@ -1,5 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap');
+
+body {
+    font-family: 'Atomic Age', cursive;
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: ;
+    background-color: rgb(39, 116, 139);
+    border-radius: 3%;
+    border-style: outset;
+    border-color: rgb(23, 59, 70);
+    border-bottom-color:rgb(23, 59, 70);
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 110px;
+    column-gap: 1em;
+    row-gap: 2em;
+    align-items: center;
+    justify-items: center;
+    min-width: 400px;
+    min-height: 400px;
+    padding: 25px 17px;
+    
+
+    
 }
+
+.button {
+    background-color: aliceblue;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    border: outset;
+    border-width: 3px;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    display: inline-block;
+    font-family: 'Atomic Age', cursive;
+    font-size: 2em;
+    text-decoration: none;    
+}
+
+.display {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 2em;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: black;
+    width: 90vw;
+    text-align: right;
+    border-style: inset;
+    border-color: grey;
+    
+}
+
+.display p {
+    padding-right: 0.5em;
+    color: rgb(28, 173, 137);
+}
+
+
+
+.clear_buttons {
+    background-color: rgb(185, 185, 185);
+    color: white;
+    border-color: rgb(124, 124, 124);
+    border-bottom-color: rgb(184, 184, 184);
+    border-right-color: rgb(184, 184, 184);
+}
+
+.numpad {
+    background-color: rgb(255, 245, 233);
+    color: black;
+    border-color: rgb(206, 198, 188);
+    border-bottom-color: rgb(255, 245, 233);
+    border-right-color: rgb(255, 245, 233);
+}
+
+.operation {
+    background-color: rgb(185, 185, 185);
+    color: white;
+    border-color: rgb(124, 124, 124);
+    border-bottom-color: rgb(184, 184, 184);
+    border-right-color: rgb(184, 184, 184);
+}
+
+#all-clear {
+    background-color: tomato;
+    color: white;
+    border-color: rgb(253, 63, 30);
+}
+
+
+
+#zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 60%;
+    border-radius: 40%;
+        
+}
+
+
 

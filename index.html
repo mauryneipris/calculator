@@ -14,31 +14,33 @@
 <main>
   <div class="grid-container">
     <!--Display box Row 1-->
-    <div class="box1">Display</div>
+    <div class="display">
+      <p id="display-text">Display</p>
+    </div>
     <!--Row 2-->
-    <div class="button box2" id="all-clear">AC</div>
-    <div class="button box4" id="clear">CE</div>
-    <div class="button box3" id="backspace">⌫</div>
-    <div class="button box5" id="divide">÷</div>
+    <button class="button box2 clear_buttons" id="all-clear">AC</button>
+    <button class="button box4 clear_buttons" id="clear">CE</button>
+    <button class="button box3 clear_buttons" id="backspace">⌫</button>
+    <button class="button box5 operation" id="divide">÷</button>
     <!--Row 3-->
-    <div class="button box6" id="seven">7</div>
-    <div class="button box7" id="eight">8</div>
-    <div class="button box8" id="nine">9</div>
-    <div class="button box9" id="multiply">x</div>
+    <button class="button box6 numpad" id="seven">7</button>
+    <button class="button box7 numpad" id="eight">8</button>
+    <button class="button box8 numpad" id="nine">9</button>
+    <button class="button box9 operation" id="multiply">x</button>
     <!--Row 4-->
-    <div class="button box10" id="four">4</div>
-    <div class="button box11" id="five">5</div>
-    <div class="button box12" id="six">6</div>
-    <div class="button box13" id="substract">-</div>
+    <button class="button box10 numpad" id="four">4</button>
+    <button class="button box11 numpad" id="five">5</button>
+    <button class="button box12 numpad" id="six">6</button>
+    <button class="button box13 operation" id="substract">-</button>
     <!--Row 5-->
-    <div class="button box14" id="one">1</div>
-    <div class="button box15" id="two">2</div>
-    <div class="button box16" id="three">3</div>
-    <div class="button box17" id="add">+</div>
+    <button class="button box14 numpad" id="one">1</button>
+    <button class="button box15 numpad" id="two">2</button>
+    <button class="button box16 numpad" id="three">3</button>
+    <button class="button box17 operation" id="add">+</button>
     <!--Row 6-->
-    <div class="button box18" id="zero">0</div>
-    <div class="button box19" id="decimal">.</div>
-    <div class="button box20" id="equals">=</div>
+    <button class="button box18 numpad row6" id="zero">0</button>
+    <button class="button box19 numpad row6" id="decimal">.</button>
+    <button class="button box20 operation row6" id="equals">=</button>
   </div>
 </main>  
 <script src="js/scripts.js" async defer></script>
