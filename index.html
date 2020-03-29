@@ -3,46 +3,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Calculator</title>
-  <meta name="description" content="Calculator">
+  <title>Javascript Calculator</title>
+  <meta name="description" content="Javascript Calculator">
   <meta name="author" content="Maury Neipris>">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<header></header>
-<main>
-  <div class="grid-container">
+
+<main class="container">
+  <div class="calculator">
     <!--Display box Row 1-->
-    <div class="display">
-      <p id="display-text">Display</p>
-    </div>
+    <section class="display">
+      <div id="user-input">1 + 1</div>
+      <div id="result">0</div>
+    </section>
     <!--Row 2-->
-    <button class="button box2 clear_buttons" id="all-clear">AC</button>
-    <button class="button box4 clear_buttons" id="clear">CE</button>
-    <button class="button box3 clear_buttons" id="backspace">⌫</button>
-    <button class="button box5 operation" id="divide">÷</button>
+    <button class="button misc_buttons" id="all-clear">AC</button>
+    <button class="button misc_buttons" id="sign">+/-</button>
+    <button class="button misc_buttons" id="backspace">⌫</button>
+    <button class="button operation" id="divide">÷</button>
     <!--Row 3-->
-    <button class="button box6 numpad" id="seven">7</button>
-    <button class="button box7 numpad" id="eight">8</button>
-    <button class="button box8 numpad" id="nine">9</button>
-    <button class="button box9 operation" id="multiply">x</button>
+    <button class="button numpad" id="seven">7</button>
+    <button class="button numpad" id="eight">8</button>
+    <button class="button numpad" id="nine">9</button>
+    <button class="button operation" id="multiply">x</button>
     <!--Row 4-->
-    <button class="button box10 numpad" id="four">4</button>
-    <button class="button box11 numpad" id="five">5</button>
-    <button class="button box12 numpad" id="six">6</button>
-    <button class="button box13 operation" id="substract">-</button>
+    <button class="button numpad" id="four">4</button>
+    <button class="button numpad" id="five">5</button>
+    <button class="button numpad" id="six">6</button>
+    <button class="button operation" id="substract">-</button>
     <!--Row 5-->
-    <button class="button box14 numpad" id="one">1</button>
-    <button class="button box15 numpad" id="two">2</button>
-    <button class="button box16 numpad" id="three">3</button>
-    <button class="button box17 operation" id="add">+</button>
+    <button class="button numpad" id="one">1</button>
+    <button class="button numpad" id="two">2</button>
+    <button class="button numpad" id="three">3</button>
+    <button class="button operation" id="add">+</button>
     <!--Row 6-->
-    <button class="button box18 numpad row6" id="zero">0</button>
-    <button class="button box19 numpad row6" id="decimal">.</button>
-    <button class="button box20 operation row6" id="equals">=</button>
+    <button class="button numpad row6" id="zero">0</button>
+    <button class="button numpad row6" id="decimal">.</button>
+    <button class="button operation row6" id="equals">=</button>
   </div>
-</main>  
-<script src="js/scripts.js" async defer></script>
+</main>
+<footer>
+  <p>Made by: <a href="https://github.com/mauryneipris" target="_blank">Maury Neipris</a> for 
+    <a
+    href="https://www.theodinproject.com/courses/web-development-101/lessons/calculator"
+    target="_blank"
+    >The Odin Project</a>
+  </p>
+</footer> 
+<script src="js/scripts.js" async></script>
 </body>
 </html>

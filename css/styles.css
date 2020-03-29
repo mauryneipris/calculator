@@ -2,9 +2,20 @@
 
 body {
     font-family: 'Atomic Age', cursive;
+    margin: 0;
+    height: 100vh;
 }
 
-.grid-container {
+
+/* ------- WRAPPERS -------*/ 
+
+.container {
+    width: 530px;
+    height: 80vh;
+    margin: 0.5% auto;
+}
+
+.calculator {
     display: grid;
     background-color: rgb(39, 116, 139);
     border-radius: 3%;
@@ -12,28 +23,51 @@ body {
     border-color: rgb(23, 59, 70);
     border-bottom-color:rgb(23, 59, 70);
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 110px;
-    column-gap: 1em;
-    row-gap: 2em;
+    grid-auto-rows: 105px;
+    grid-gap: 2rem;
     align-items: center;
     justify-items: center;
-    min-width: 400px;
-    min-height: 400px;
-    padding: 25px 17px;
-    
-
+    padding: 20px;
     
 }
 
+
+/* ------- DISPLAY -------*/ 
+.display {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 94%;
+    padding: 3% 3% 2% 3%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1.4rem;
+    background-color: black;
+    
+    color: rgb(28, 173, 137);
+    border-style: inset;
+    border-color: grey;
+    
+}
+
+#result {
+    font-size: 2rem;
+    padding-top: 0.2rem;
+}
+
+/* ------- BUTTONS -------*/ 
 .button {
-    background-color: aliceblue;
+    cursor: pointer;
+    background-color: #f0f8ff;
     color: white;
     text-align: center;
     border-radius: 50%;
+    padding:  1rem 1.5rem;
     border: outset;
     border-width: 3px;
-    width: 100px;
-    height: 100px;
+    box-shadow: #101010 3px 3px 3px;
     vertical-align: middle;
     display: inline-block;
     font-family: 'Atomic Age', cursive;
@@ -41,35 +75,28 @@ body {
     text-decoration: none;    
 }
 
-.display {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 2em;
-    font-weight: bold;
-    vertical-align: middle;
-    background-color: black;
-    width: 90vw;
-    text-align: right;
-    border-style: inset;
-    border-color: grey;
-    
+.button:hover {
+    background-color: #ccc;
 }
 
-.display p {
-    padding-right: 0.5em;
-    color: rgb(28, 173, 137);
+.button:active {
+    background-color: grey;
 }
 
-
-
-.clear_buttons {
+.misc_buttons {
     background-color: rgb(185, 185, 185);
     color: white;
     border-color: rgb(124, 124, 124);
     border-bottom-color: rgb(184, 184, 184);
     border-right-color: rgb(184, 184, 184);
+}
+
+.misc_buttons:hover {
+    background-color: rgb(106, 160, 192);
+}
+
+.misc_buttons:active {
+    background-color: rgb(96, 147, 177);
 }
 
 .numpad {
@@ -88,13 +115,27 @@ body {
     border-right-color: rgb(184, 184, 184);
 }
 
+.operation:hover {
+    background-color: rgb(106, 160, 192);
+}
+
+.operation:active {
+    background-color: rgb(96, 147, 177);
+}
+
 #all-clear {
     background-color: tomato;
     color: white;
     border-color: rgb(253, 63, 30);
 }
 
+#all-clear:hover {
+    background-color: rgb(240, 75, 46);
+}
 
+#all-clear:active {
+    background-color: rgb(180, 27, 0);
+}
 
 #zero {
     grid-column-start: 1;
@@ -103,6 +144,34 @@ body {
     border-radius: 40%;
         
 }
+
+/* ------- FOOTER -------*/ 
+
+footer {
+    width: 100%;
+    background-color: indianred;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+    z-index: -1;
+}
+
+footer p {
+    padding-right: 1rem;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
 
 
 
