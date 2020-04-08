@@ -2,16 +2,18 @@
 
 body {
     font-family: 'Atomic Age', cursive;
-    margin: 0;
-    height: 100vh;
+    background-color: teal;
+    min-height: 500px;
+    margin-bottom: 50px;
+    clear: both;
 }
+
 
 
 /* ------- WRAPPERS -------*/ 
 
 .container {
-    width: 530px;
-    height: 80vh;
+    width: 520px;
     margin: 0.5% auto;
 }
 
@@ -23,8 +25,8 @@ body {
     border-color: rgb(23, 59, 70);
     border-bottom-color:rgb(23, 59, 70);
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 105px;
-    grid-gap: 2rem;
+    grid-auto-rows: 100px;
+    grid-gap: 1.5rem;
     align-items: center;
     justify-items: center;
     padding: 20px;
@@ -37,24 +39,25 @@ body {
     display: flex;
     flex-direction: column;
     text-align: right;
+    justify-content: center;
     width: 94%;
-    padding: 3% 3% 2% 3%;
+    padding: 1% 1% 1% 1%;
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-end: 1;
     font-size: 1.4rem;
     background-color: black;
-    
     color: rgb(28, 173, 137);
     border-style: inset;
     border-color: grey;
     
 }
 
-#result {
+#display {
     font-size: 2rem;
     padding-top: 0.2rem;
+    padding-right: 0.2rem;
 }
 
 /* ------- BUTTONS -------*/ 
@@ -154,8 +157,8 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 0.5rem;
-    z-index: -1;
+    padding: 0.1rem;
+    
 }
 
 footer p {
