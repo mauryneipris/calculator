@@ -122,7 +122,7 @@ body {
     background-color: rgb(106, 160, 192);
 }
 
-.operation:active {
+.is_pressed {
     background-color: rgb(96, 147, 177);
 }
 

@@ -6,7 +6,7 @@
 // const misc = document.querySelectorAll(".misc_buttons");
 // const display = document.querySelector(".display");
 const display = document.querySelector("#display");
-const calculator = document.querySelector(".calculator");
+// const calculator = document.querySelector(".calculator");
 // const userInput = document.querySelector("#user-input");
 // const decimal = document.querySelector("#decimal");
 
@@ -36,32 +36,49 @@ function operate(operation, a, b) {
 
 // userInput.textContent = 0;
 display.textContent = "0";
-calculator.dataset.firstValue = '';
-calculator.dataset.secondValue = '';
-calculator.dataset.displayedNum = '';
+// calculator.dataset.firstValue = '';
+// calculator.dataset.secondValue = '';
+// calculator.dataset.displayedNum = '';
 
-// const calculator = {
-//     firstValue: '',
-//     secondValue: '',
-//     displayedNum: display.textContent,
-//     operation: '',
-//     previousKeyType: '',
-//     action: ''
-// }
+const calculator = {
+    firstValue: '',
+    secondValue: '',
+    displayedNum: display.textContent,
+    operation: '',
+    operated: false,
+    decimaled: false,
+    cleared: false,
+    calculated: false,
+    action: ''
+}
 
 
 // fix bug for second number. If decimal is pressed, it is not displayed
 const numbers = document.querySelectorAll("[data-key]");
 numbers.forEach((button) => button.addEventListener('click', (e) => {
+    operators.forEach((button) => button.classList.remove('is_pressed'));
     let number = e.target.dataset.key;
     // console.log(number);
-    const previousKeyType = calculator.dataset.previousKeyType;
-    const displayedNum = display.textContent;
-    if (displayedNum === "0" || previousKeyType === 'operator') {
-       display.textContent =  number;
+    // const previousKeyType = calculator.dataset.previousKeyType;
+    // const displayedNum = display.textContent;
+  
+    if (display.textContent === "0" || calculator.operated === true) {
+        // display.textContent =  number;
+        // calculator.displayedNum = display.textContent;
+        calculator.displayedNum =  number;
+        display.textContent =  calculator.displayedNum;
+        calculator.operated = false;
+       
+    } else if ( calculator.decimaled === true) {
+        calculator.displayedNum = calculator.displayedNum + number;
+        display.textContent = calculator.displayedNum;
     } 
     else {
-        display.textContent = displayedNum + number;
+        // display.textContent = calculator.displayedNum + number;
+        // calculator.displayedNum = display.textContent;
+        calculator.displayedNum = calculator.displayedNum + number;
+        display.textContent = calculator.displayedNum;
+       
     }
 }));
 
@@ -69,9 +86,16 @@ const operators = document.querySelectorAll("[data-op]");
 operators.forEach((button) => button.addEventListener('click', (e) => {
     let operator = e.target.dataset.op;
     // console.log(operator);
-    calculator.dataset.previousKeyType = 'operator'
-    calculator.dataset.firstValue = display.textContent;
-    calculator.dataset.operator = operator.toString();
+    // calculator.dataset.previousKeyType = 'operator'
+    // calculator.dataset.firstValue = display.textContent;
+    // calculator.dataset.operator = operator.toString();
+    operators.forEach((button) => button.classList.remove('is_pressed'));
+    calculator.calculated = false;
+    e.target.classList.add('is_pressed');
+    calculator.operated = true;
+    calculator.firstValue = display.textContent;
+    calculator.operation = operator.toString();
+
     
 }));
 
@@ -81,29 +105,46 @@ actions.forEach((action) => action.addEventListener('click', (e) => {
     // console.log(action);
     if (action === 'escape') {
         console.log('All Clear key');
+        calculator.cleared = true;
+        clear();
     }
-    if (action === '.' && !display.textContent.includes('.')) {
-        display.textContent += '.';
+    if (action === '.') {
+        // display.textContent += '.';
+        // calculator.displayedNum = display.textContent;
+        // calculator.displayedNum += '.';
+        if (!display.textContent.includes('.')) {
+            calculator.decimaled = true;
+            calculator.displayedNum += '.';
+            display.textContent = calculator.displayedNum;
+        }
+        if (calculator.operated === true) {
+            operators.forEach((button) => button.classList.remove('is_pressed'));
+            calculator.decimaled = true;
+            calculator.operated = false;
+            calculator.displayedNum = 0 + ".";
+            display.textContent = calculator.displayedNum;
+        }
     }
     if (action === 'calculate') {
-        const firstValue = parseFloat(calculator.dataset.firstValue);
-        const operation = calculator.dataset.operator;
+        // const firstValue = parseFloat(calculator.dataset.firstValue);
+        // const operation = calculator.dataset.operator;
+        // const secondValue = parseFloat(display.textContent);
+        const firstValue = parseFloat(calculator.firstValue);
         const secondValue = parseFloat(display.textContent);
-
-        console.log(firstValue);
-        console.log(secondValue);
-        console.log(operation); 
-        display.textContent = operate(operation, firstValue, secondValue);
+        
+        calculator.displayedNum = operate(calculator.operation, firstValue, secondValue);
+        display.textContent = calculator.displayedNum;
+        calculator.calculated = true;
     }
-
 }))
 
 function clear() {
-    firstValue = '';
-    secondValue = '';
+    calculator.firstValue = '';
+    calculator.secondValue = '';
     currOperand = '';
     operated = false;
     display.textContent = "0";
+    calculator.displayedNum = display.textContent;
 }
 
 window.addEventListener("keydown", keyLogger);
