@@ -74,7 +74,7 @@ const operators = document.querySelectorAll("[data-op]");
 operators.forEach((button) => button.addEventListener('click', (e) => {
     let operator = e.target.dataset.op;
     console.log(calculator.previousKeyType)
-    console.log(calculator.firstValue)
+
     if (calculator.firstValue && 
         calculator.operation && 
         calculator.previousKeyType !== 'operator' && 
@@ -84,9 +84,9 @@ operators.forEach((button) => button.addEventListener('click', (e) => {
         display.textContent = calcValue;
 
         calculator.firstValue = calcValue;
-        console.log(calculator.firstValue)
+
     } else {
-        calculator.firstValue = calculator.displayedNum;
+        calculator.firstValue = display.textContent;
     }
     operators.forEach((button) => button.classList.remove('is_pressed'));
     e.target.classList.add('is_pressed');
@@ -102,6 +102,21 @@ actions.forEach((action) => action.addEventListener('click', (e) => {
     if (action === 'Escape') {
         calculator.previousKeyType = 'clear';
         clear();
+    }
+
+    if (action === 'Backspace') {
+        if (display.textContent.length > 1) {
+            display.textContent = display.textContent.slice(0, -1);
+        }
+    }
+
+    if (action === 'sign') {
+        if (!display.textContent.includes('-')){
+            display.textContent = '-' + display.textContent;
+        } else if (display.textContent.includes('-')){
+            display.textContent = -display.textContent;
+        }
+       
     }
     if (action === '.') {
 
