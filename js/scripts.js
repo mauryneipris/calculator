@@ -53,7 +53,9 @@ numbers.forEach((button) => button.addEventListener('click', (e) => {
     operators.forEach((button) => button.classList.remove('is_pressed'));
     let number = e.target.dataset.key;
     console.log(calculator.previousKeyType)
-    
+    if ( calculator.firstValue && calculator.previousKeyType === 'calculate') {
+        calculator.firstValue = '';
+    } 
     if (display.textContent === 0 || 
         calculator.previousKeyType === 'operator' || 
         calculator.previousKeyType === 'calculate') {
