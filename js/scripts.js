@@ -34,11 +34,8 @@ function operate(operation, a, b) {
 };
 
 
-// userInput.textContent = 0;
 display.textContent = 0;
-// calculator.dataset.firstValue = '';
-// calculator.dataset.secondValue = '';
-// calculator.dataset.displayedNum = '';
+
 
 const calculator = {
     firstValue: '',
@@ -46,11 +43,7 @@ const calculator = {
     operation: '',
     calcValue: '',
     previousKeyType: '',
-    previousKey: '',
-    decimaled: false,
-    cleared: false,
-    calculated: false,
-    action: ''
+    modValue: ''
 }
 
 
@@ -61,57 +54,51 @@ numbers.forEach((button) => button.addEventListener('click', (e) => {
     let number = e.target.dataset.key;
     console.log(calculator.previousKeyType)
     
-    const previousKeyType = calculator.previousKeyType;
-    // const displayedNum = display.textContent;
-    
-    if (display.textContent === 0 || previousKeyType === 'operator' ) {
-        // display.textContent =  number;
-        // calculator.displayedNum = display.textContent;
+    if (display.textContent === 0 || 
+        calculator.previousKeyType === 'operator' || 
+        calculator.previousKeyType === 'calculate') {
+
         calculator.displayedNum =  parseFloat(number);
         display.textContent =  calculator.displayedNum;
-        calculator.previousKeyType = 'number';
-        // if (calculator.previousKey === 'decimal') {
-        //     calculator.displayedNum = calculator.displayedNum + number;
-        //     display.textContent = calculator.displayedNum;
-        // } else {
-        // calculator.displayedNum =  parseFloat(number);
-        // display.textContent =  calculator.displayedNum;
-        // }
-       
+          
     } 
     else {
-        // display.textContent = calculator.displayedNum + number;
-        // calculator.displayedNum = display.textContent;
+
         calculator.displayedNum = parseFloat(calculator.displayedNum + number);
-        display.textContent = calculator.displayedNum;
-        calculator.previousKeyType = 'number';
-       
+        display.textContent = calculator.displayedNum;       
     }
+    calculator.previousKeyType = 'number';
 }));
 
 const operators = document.querySelectorAll("[data-op]");
 operators.forEach((button) => button.addEventListener('click', (e) => {
     let operator = e.target.dataset.op;
     console.log(calculator.previousKeyType)
-    // console.log(operator);
-    // calculator.dataset.previousKeyType = 'operator'
-    // calculator.dataset.firstValue = display.textContent;
-    // calculator.dataset.operator = operator.toString();
+    console.log(calculator.firstValue)
+    if (calculator.firstValue && 
+        calculator.operation && 
+        calculator.previousKeyType !== 'operator' && 
+        calculator.previousKeyType !== 'calculate') {
+        console.log( calculator.firstValue + calculator.operation + calculator.displayedNum)
+        const calcValue = operate(calculator.operation, calculator.firstValue, calculator.displayedNum);
+        display.textContent = calcValue;
+
+        calculator.firstValue = calcValue;
+        console.log(calculator.firstValue)
+    } else {
+        calculator.firstValue = calculator.displayedNum;
+    }
     operators.forEach((button) => button.classList.remove('is_pressed'));
-    calculator.calculated = false;
     e.target.classList.add('is_pressed');
     calculator.previousKeyType = 'operator';
     calculator.firstValue = parseFloat(display.textContent);
-    calculator.operation = operator.toString();
-    
-
-
+    calculator.operation = operator.toString();    
 }));
 
 const actions = document.querySelectorAll("[data-action]");
 actions.forEach((action) => action.addEventListener('click', (e) => {
     let action = e.target.dataset.action;
-    // console.log(action);
+
     if (action === 'Escape') {
         calculator.previousKeyType = 'clear';
         clear();
@@ -119,32 +106,33 @@ actions.forEach((action) => action.addEventListener('click', (e) => {
     if (action === '.') {
 
         console.log(calculator.previousKeyType)
-        if (calculator.previousKeyType === 'operator') {
+        if (calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'calculate') {
             operators.forEach((button) => button.classList.remove('is_pressed'));
             calculator.displayedNum = 0 + '.';
             display.textContent = calculator.displayedNum;
-            calculator.previousKeyType = 'decimal';
         }
         if (!display.textContent.includes('.')) {
             calculator.displayedNum += '.';
-            display.textContent = calculator.displayedNum;
-            calculator.previousKeyType = 'decimal';
+            display.textContent = calculator.displayedNum;     
         }
-        
- 
-       
+        calculator.previousKeyType = 'decimal';       
     }
     if (action === 'calculate') {
-        calculator.previousKeyType = 'calculate';
-        // const firstValue = parseFloat(calculator.dataset.firstValue);
-        // const operation = calculator.dataset.operator;
-        // const secondValue = parseFloat(display.textContent);
-        let firstValue = parseFloat(calculator.firstValue);
+
         let secondValue = parseFloat(display.textContent);
         
+        if (calculator.firstValue) {
+            if (calculator.previousKeyType === 'calculate') {
+                calculator.firstValue = calculator.displayedNum;
+                secondValue = calculator.modValue;
+                
+            }
         calculator.displayedNum = operate(calculator.operation, calculator.firstValue, secondValue);
         display.textContent = calculator.displayedNum;
-        // calculator.calculated = true;
+        }
+        calculator.modValue = secondValue;
+        calculator.previousKeyType = 'calculate';
+        operators.forEach((button) => button.classList.remove('is_pressed'));
     }
 }))
 
@@ -154,11 +142,10 @@ function clear() {
     display.textContent = 0,
     calculator.displayedNum = display.textContent,
     calculator.operation = '',
-    calculator.previousKey = '',
-    calculator.cleared = false,
-    calculator.calculated = false,
-    calculator.action = ''
+    calculator.modValue = ''
+    operators.forEach((button) => button.classList.remove('is_pressed'));
 }
+
 
 window.addEventListener("keydown", keyLogger);
 function keyLogger(e) {
