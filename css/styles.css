@@ -185,39 +185,7 @@ footer a:hover {
 /*------- Galaxy S5--------*/
 /*@media only screen
 and (min-device-width : 360px) 
-and (max-device-width : 640px) {
-    body {
-        width: 100%;
-        font-size: 2rem;
-        
-    }
-    .container {
-        width: 98%;
-        height: 95%;
-        
-    }
-    .calculator {
-        grid-auto-rows: 12%;
-        height: 90%;
-        padding: 40px;
-    }
-
-    .display {
-        font-size: 3rem;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        padding: 2%;
-    }
-
-    #display {
-        font-size: 5rem;
-    }
-
-    button {
-        height:9rem;
-        width:9rem;     
-    }
-}
+and (max-device-width : 640px) {}   
 */
 /*------- iPhone 5/5S---------*/
 @media only screen 
@@ -300,7 +268,7 @@ and (max-device-width : 667px) {
 /*------- iPhone 6/7/8 Plus--------*/
 /*--@media only screen 
 and (min-device-width : 414px) 
-and (max-device-width : 736px) {
+and (max-device-width : 736px) {}
  
 */
 
