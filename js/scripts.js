@@ -23,8 +23,10 @@ function operate(operation, a, b) {
             return add(a, b);
         case '-':
             return subtract(a, b);
-        case 'x':
+        case '*':
             return multiply(a, b);
+        case 'x':
+            return multiply(a,b);
         case '/':
             return divide(a, b);
     }  
@@ -45,6 +47,69 @@ const numbers = document.querySelectorAll("[data-key]");
 numbers.forEach((button) => button.addEventListener('click', (e) => {
     operators.forEach((button) => button.classList.remove('is_pressed'));
     let number = e.target.dataset.key;
+    console.log(number);
+    numberPressed(number);
+}));
+
+const operators = document.querySelectorAll("[data-op]");
+operators.forEach((button) => button.addEventListener('click', (e) => {
+    let operator = e.target.dataset.op;
+    operatorPressed(operator)
+    operators.forEach((button) => button.classList.remove('is_pressed'));
+    e.target.classList.add('is_pressed');    
+}));
+
+const actions = document.querySelectorAll("[data-action]");
+actions.forEach((action) => action.addEventListener('click', (e) => {
+    let action = e.target.dataset.action;
+    if (action === 'Escape') {
+            clear();
+    }
+
+    if (action === 'Backspace') {
+        backspace();
+    }
+
+    if (action === 'sign') {
+        changeSign();
+    }
+    if (action === '.') {
+        decimalPressed();
+    }
+    if (action === 'calculate') {
+        calculate();
+    }
+
+
+
+}))
+
+function clear() {
+    calculator.firstValue = '',
+    calculator.secondValue = '',
+    display.textContent = 0,
+    calculator.displayedNum = display.textContent,
+    calculator.operation = '',
+    calculator.modValue = ''
+    operators.forEach((button) => button.classList.remove('is_pressed'));
+    calculator.previousKeyType = 'clear';
+}
+
+function backspace() {
+    if (display.textContent.length > 1) {
+        display.textContent = display.textContent.slice(0, -1);
+    }
+}
+
+function changeSign() {
+    if (!display.textContent.includes('-')){
+        display.textContent = '-' + display.textContent;
+    } else if (display.textContent.includes('-')){
+        display.textContent = -display.textContent;
+    }
+}
+
+function numberPressed(number) {
     if ( calculator.firstValue && calculator.previousKeyType === 'calculate') {
         calculator.firstValue = '';
     } 
@@ -61,11 +126,22 @@ numbers.forEach((button) => button.addEventListener('click', (e) => {
         display.textContent = calculator.displayedNum;       
     }
     calculator.previousKeyType = 'number';
-}));
+}
 
-const operators = document.querySelectorAll("[data-op]");
-operators.forEach((button) => button.addEventListener('click', (e) => {
-    let operator = e.target.dataset.op;
+function decimalPressed() {
+    if (calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'calculate') {
+        operators.forEach((button) => button.classList.remove('is_pressed'));
+        calculator.displayedNum = 0 + '.';
+        display.textContent = calculator.displayedNum;
+    }
+    if (!display.textContent.includes('.')) {
+        calculator.displayedNum += '.';
+        display.textContent = calculator.displayedNum;     
+    }
+    calculator.previousKeyType = 'decimal'; 
+}
+
+function operatorPressed(operator) {
     if (calculator.firstValue && 
         calculator.operation && 
         calculator.previousKeyType !== 'operator' && 
@@ -76,98 +152,62 @@ operators.forEach((button) => button.addEventListener('click', (e) => {
         } else {
              calculator.firstValue = display.textContent;
     }
-    operators.forEach((button) => button.classList.remove('is_pressed'));
-    e.target.classList.add('is_pressed');
     calculator.previousKeyType = 'operator';
     calculator.firstValue = parseFloat(display.textContent);
-    calculator.operation = operator.toString();    
-}));
-
-const actions = document.querySelectorAll("[data-action]");
-actions.forEach((action) => action.addEventListener('click', (e) => {
-    let action = e.target.dataset.action;
-    if (action === 'Escape') {
-        calculator.previousKeyType = 'clear';
-        clear();
-    }
-
-    if (action === 'Backspace') {
-        if (display.textContent.length > 1) {
-            display.textContent = display.textContent.slice(0, -1);
-        }
-    }
-
-    if (action === 'sign') {
-        if (!display.textContent.includes('-')){
-            display.textContent = '-' + display.textContent;
-        } else if (display.textContent.includes('-')){
-            display.textContent = -display.textContent;
-        }    
-    }
-    if (action === '.') {
-        if (calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'calculate') {
-            operators.forEach((button) => button.classList.remove('is_pressed'));
-            calculator.displayedNum = 0 + '.';
-            display.textContent = calculator.displayedNum;
-        }
-        if (!display.textContent.includes('.')) {
-            calculator.displayedNum += '.';
-            display.textContent = calculator.displayedNum;     
-        }
-        calculator.previousKeyType = 'decimal';       
-    }
-    if (action === 'calculate') {
-        let secondValue = parseFloat(display.textContent);
-        
-        if (calculator.firstValue) {
-            if (calculator.previousKeyType === 'calculate') {
-                calculator.firstValue = calculator.displayedNum;
-                secondValue = calculator.modValue;
-                
-            }
-        calculator.displayedNum = operate(calculator.operation, calculator.firstValue, secondValue);
-        display.textContent = calculator.displayedNum;
-        }
-        calculator.modValue = secondValue;
-        calculator.previousKeyType = 'calculate';
-        operators.forEach((button) => button.classList.remove('is_pressed'));
-    }
-}))
-
-function clear() {
-    calculator.firstValue = '',
-    calculator.secondValue = '',
-    display.textContent = 0,
-    calculator.displayedNum = display.textContent,
-    calculator.operation = '',
-    calculator.modValue = ''
-    operators.forEach((button) => button.classList.remove('is_pressed'));
+    calculator.operation = operator.toString(); 
 }
 
-
+function calculate() {
+    let secondValue = parseFloat(display.textContent);
+        
+    if (calculator.firstValue) {
+        if (calculator.previousKeyType === 'calculate') {
+            calculator.firstValue = calculator.displayedNum;
+            secondValue = calculator.modValue;
+            
+        }
+    calculator.displayedNum = operate(calculator.operation, calculator.firstValue, secondValue);
+    display.textContent = calculator.displayedNum;
+    }
+    calculator.modValue = secondValue;
+    calculator.previousKeyType = 'calculate';
+    operators.forEach((button) => button.classList.remove('is_pressed'));
+}
 window.addEventListener("keydown", keyLogger);
 function keyLogger(e) {
     let keyPressed = e.key;
     let numParsed = parseFloat(keyPressed);
-    if (!isNaN(numParsed) || keyPressed === ".") {
+    const ops = document.querySelectorAll('.operation');
+    const op = document.querySelector(`button[data-op="${keyPressed}"]`);
+    if (keyPressed === 'x') {
+        keyPressed = '*';
+    }
+    
+    
 
+    if (!isNaN(keyPressed) ) {
+        number = numParsed.toString();
+        numberPressed(number);
+        ops.forEach((op) => op.classList.remove('is_pressed'));
+  
     } else if ( keyPressed === "Backspace") {
         //Backspace function here
-
-    } else if ( keyPressed === "=" || keyPressed === "Enter") {
+        backspace();
+    } else if (keyPressed === 'Escape') { 
+        clear();
+    } else if ( keyPressed === '.') {
+        decimalPressed();
+    }else if ( keyPressed === "=" || keyPressed === "Enter") {
         //computeEquals function here
-
-    } else if ( keyPressed === "+" || keyPressed === "-") {
+        calculate();
+    } else if ( keyPressed === "+" || keyPressed === "-"|| keyPressed === "*" || keyPressed === "x" || keyPressed === "/") {
         //assign keyPressed to operation
-
-    } else if ( keyPressed === "*" || keyPressed === "x") {
-        
-        let operator = '*';
-    } else if (keyPressed === "/") {
-        e.preventDefault();
-        
-        // assign keyPressed to operation
-    }
+        // ops.classList.remove('is_pressed');
+        ops.forEach((op) => op.classList.remove('is_pressed'));
+        op.classList.add('is_pressed');
+        operator = keyPressed;
+        operatorPressed(operator);
+    } 
    //display equation function runs here
 
 }
