@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap');
 
+
+
+
 body {
     font-family: 'Atomic Age', cursive;
     background-color: teal;
@@ -177,7 +180,169 @@ footer a:hover {
 }
 
 
+/*------- MEDIA QUERIES--------*/
 
+/*------- Galaxy S5--------*/
+/*@media only screen
+and (min-device-width : 360px) 
+and (max-device-width : 640px) {
+    body {
+        width: 100%;
+        font-size: 2rem;
+        
+    }
+    .container {
+        width: 98%;
+        height: 95%;
+        
+    }
+    .calculator {
+        grid-auto-rows: 12%;
+        height: 90%;
+        padding: 40px;
+    }
+
+    .display {
+        font-size: 3rem;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        padding: 2%;
+    }
+
+    #display {
+        font-size: 5rem;
+    }
+
+    button {
+        height:9rem;
+        width:9rem;     
+    }
+}
+*/
+/*------- iPhone 5/5S---------*/
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) {
+    body {
+        width: 100%;
+        font-size: 2rem;
+        height: 97vh;
+        
+    }
+    .container {
+        width: 98%;
+        height: 99%;
+        
+    }
+    .calculator {
+        grid-auto-rows: 12%;
+        height: 92%;
+        padding: 40px;
+        
+    }
+
+    .display {
+        font-size: 3rem;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        padding: 2%;
+    }
+
+    #display {
+        font-size: 5rem;
+    }
+
+    button {
+        height:10rem;
+        width:10rem;       
+    }
+}
+
+/*------- iPhone 6/7/8--------*/
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    body {
+        width: 100%;
+        font-size: 2rem;
+        height: 88vh;
+        
+    }
+    .container {
+        width: 98%;
+        height: 100%;
+        
+        
+    }
+    .calculator {
+        grid-auto-rows: 12%;
+        height: 100%;
+        padding: 40px;
+    }
+
+    .display {
+        font-size: 3rem;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        padding: 2%;
+    }
+
+    #display {
+        font-size: 5rem;
+    }
+
+    button {
+        height:10rem;
+        width:10rem;    
+    }
+}
+
+/*------- iPhone 6/7/8 Plus--------*/
+/*--@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) {
+ 
+*/
+
+/*------- iPad -----------*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+    body {
+        width: 100%;
+        font-size: 2rem;
+        height: 84vh;
+        
+    }
+    .container {
+        width: 98%;
+        height: 100%;
+        
+        
+    }
+    .calculator {
+        grid-auto-rows: 12%;
+        grid-gap:5.5%;
+        height: 100%;
+        padding: 40px;
+    }
+
+    .display {
+        font-size: 3rem;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        padding: 2%;
+    }
+
+    #display {
+        font-size: 5rem;
+    }
+
+    button {
+        height:9.5rem;
+        width:9.5rem;    
+    }
+}
 
 
 
