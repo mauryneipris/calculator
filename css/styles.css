@@ -188,7 +188,7 @@ and (min-device-width : 360px)
 and (max-device-width : 640px) {}   
 */
 /*------- iPhone 5/5S---------*/
-@media only screen 
+@media screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px) {
     body {
@@ -227,7 +227,7 @@ and (max-device-width : 568px) {
 }
 
 /*------- iPhone 6/7/8--------*/
-@media only screen 
+@media screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
     body {
@@ -273,7 +273,7 @@ and (max-device-width : 736px) {}
 */
 
 /*------- iPad -----------*/
-@media only screen 
+@media screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { 
     body {
