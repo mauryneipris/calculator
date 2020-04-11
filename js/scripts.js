@@ -6,6 +6,8 @@
 // const misc = document.querySelectorAll(".misc_buttons");
 // const display = document.querySelector(".display");
 const display = document.querySelector("#display");
+const clearButton = document.querySelector('[data-action=Escape]');
+
 // const calculator = document.querySelector(".calculator");
 // const userInput = document.querySelector("#user-input");
 // const decimal = document.querySelector("#decimal");
@@ -54,22 +56,21 @@ numbers.forEach((button) => button.addEventListener('click', (e) => {
 const operators = document.querySelectorAll("[data-op]");
 operators.forEach((button) => button.addEventListener('click', (e) => {
     let operator = e.target.dataset.op;
-    operatorPressed(operator)
     operators.forEach((button) => button.classList.remove('is_pressed'));
-    e.target.classList.add('is_pressed');    
+    // e.target.classList.add('is_pressed');    
+    operatorPressed(operator);
 }));
 
 const actions = document.querySelectorAll("[data-action]");
 actions.forEach((action) => action.addEventListener('click', (e) => {
     let action = e.target.dataset.action;
+ 
     if (action === 'Escape') {
-            clear();
+        clear();
     }
-
     if (action === 'Backspace') {
         backspace();
     }
-
     if (action === 'sign') {
         changeSign();
     }
@@ -79,19 +80,31 @@ actions.forEach((action) => action.addEventListener('click', (e) => {
     if (action === 'calculate') {
         calculate();
     }
-
-
-
 }))
 
+
+
+function ac_to_ce() {
+    clearButton.textContent = 'CE';
+}
+
 function clear() {
-    calculator.firstValue = '',
-    calculator.secondValue = '',
-    display.textContent = 0,
-    calculator.displayedNum = display.textContent,
-    calculator.operation = '',
-    calculator.modValue = ''
-    operators.forEach((button) => button.classList.remove('is_pressed'));
+    if (clearButton.textContent === 'AC') {
+        calculator.firstValue = '',
+        calculator.secondValue = '',
+        display.textContent = 0,
+        calculator.displayedNum = display.textContent,
+        calculator.operation = '',
+        calculator.modValue = ''
+        operators.forEach((button) => button.classList.remove('is_pressed'));
+    } else {
+        clearButton.textContent = 'AC';
+        display.textContent = 0;
+        calculator.displayedNum = 0;
+        const op = document.querySelector(`button[data-op="${calculator.operation}"]`);
+        op.classList.add('is_pressed');
+    }
+    
     calculator.previousKeyType = 'clear';
 }
 
@@ -102,6 +115,7 @@ function backspace() {
 }
 
 function changeSign() {
+    ac_to_ce();
     if (!display.textContent.includes('-')){
         display.textContent = '-' + display.textContent;
     } else if (display.textContent.includes('-')){
@@ -110,6 +124,7 @@ function changeSign() {
 }
 
 function numberPressed(number) {
+    ac_to_ce();
     if ( calculator.firstValue && calculator.previousKeyType === 'calculate') {
         calculator.firstValue = '';
     } 
@@ -129,6 +144,7 @@ function numberPressed(number) {
 }
 
 function decimalPressed() {
+    ac_to_ce()
     if (calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'calculate') {
         operators.forEach((button) => button.classList.remove('is_pressed'));
         calculator.displayedNum = 0 + '.';
@@ -142,6 +158,7 @@ function decimalPressed() {
 }
 
 function operatorPressed(operator) {
+    ac_to_ce()
     if (calculator.firstValue && 
         calculator.operation && 
         calculator.previousKeyType !== 'operator' && 
@@ -154,7 +171,9 @@ function operatorPressed(operator) {
     }
     calculator.previousKeyType = 'operator';
     calculator.firstValue = parseFloat(display.textContent);
-    calculator.operation = operator.toString(); 
+    calculator.operation = operator.toString();
+    const op = document.querySelector(`button[data-op="${calculator.operation}"]`);
+    op.classList.add('is_pressed'); 
 }
 
 function calculate() {
@@ -182,9 +201,6 @@ function keyLogger(e) {
     if (keyPressed === 'x') {
         keyPressed = '*';
     }
-    
-    
-
     if (!isNaN(keyPressed) ) {
         number = numParsed.toString();
         numberPressed(number);
@@ -204,10 +220,10 @@ function keyLogger(e) {
         //assign keyPressed to operation
         // ops.classList.remove('is_pressed');
         ops.forEach((op) => op.classList.remove('is_pressed'));
-        op.classList.add('is_pressed');
+        // op.classList.add('is_pressed');
         operator = keyPressed;
         operatorPressed(operator);
     } 
-   //display equation function runs here
+
 
 }
