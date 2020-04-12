@@ -73,7 +73,7 @@ body {
     cursor: pointer;
     background-color: #f0f8ff;
     color: white;
-    text-align: center;
+
     border-radius: 50%;
     border: outset;
     border-width: 3px;
@@ -228,7 +228,10 @@ and (orientation : landscape) {
     }
     .calculator {
         font-size: 1em;
+        height: 100%;
+        padding: .5%;
     }
+
 
     footer {
         visibility: hidden;
@@ -290,7 +293,11 @@ and (orientation : landscape) {
         width: 98%;
         height: 100%;      
     }
-
+    .calculator {
+        font-size: 1em;
+        height: 100%;
+        padding: .5%;
+    }
     footer {
         visibility: hidden;
         display: none;
@@ -307,7 +314,9 @@ and (orientation : landscape) {
         height: 100%;      
     }
     .calculator {
-        height: 95%;
+        font-size: 1em;
+        height: 100%;
+        padding: .5%;
     }
     .display {
         font-size: 2.2em;
@@ -334,10 +343,12 @@ and (orientation : landscape) {
 
     .container {
         width: 98%;
-        height: 91%;      
+             
     }
     .calculator {
-        font-size: 1em;
+        font-size: .75em;
+        height: 95%;
+        padding: .5%;
     }
     .display {
         font-size: 2.2em;
