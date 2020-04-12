@@ -5,7 +5,7 @@
 // const allClear = document.querySelectorAll("#all-clear");
 // const misc = document.querySelectorAll(".misc_buttons");
 // const display = document.querySelector(".display");
-const display = document.querySelector("#display");
+const display = document.querySelector(".display");
 const clearButton = document.querySelector('[data-action=Escape]');
 
 // const calculator = document.querySelector(".calculator");
