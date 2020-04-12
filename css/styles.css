@@ -3,14 +3,15 @@
 
 
 
-body {
+html {
     font-family: 'Atomic Age', cursive;
     font-size: 1em;
     background-color: teal;
     min-height: 500px;
-    height: 100vh;
-    margin-bottom: 50px;
-    clear: both;
+    height: 100%;
+    width: 100%;
+    /* margin-bottom: 50px; */
+    
 }
 
 
@@ -18,8 +19,10 @@ body {
 /* ------- WRAPPERS -------*/ 
 
 .container {
-    width: 500px;
+    width: 40vw;
+    min-width: 500px;
     margin: 0.5% auto;
+    height: 70vh;
 }
 
 .calculator {
@@ -30,12 +33,13 @@ body {
     border-color: rgb(23, 59, 70);
     border-bottom-color:rgb(23, 59, 70);
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 16%;
-    gap: 6%;
+    grid-auto-rows: 12%;
+    gap: 5%;
     align-items: center;
     justify-items: center;
-    padding: 20px;
-    padding-bottom: 120px;
+    padding: 15px;
+    height: 100%;
+    /* padding-bottom: 120px; */
     
 }
 
@@ -46,13 +50,13 @@ body {
     flex-direction: column;
     text-align: right;
     justify-content: center;
-    width: 94%;
+    width: 96%;
     padding: 1% 1% 1% 1%;
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 1;
-    font-size: 1.4rem;
+    
     background-color: black;
     color: rgb(28, 173, 137);
     border-style: inset;
@@ -61,9 +65,7 @@ body {
 }
 
 #display {
-    font-size: 2rem;
-    padding-top: 0.2rem;
-    padding-right: 0.2rem;
+    font-size: 2.5em;
 }
 
 /* ------- BUTTONS -------*/ 
@@ -73,7 +75,7 @@ body {
     color: white;
     text-align: center;
     border-radius: 50%;
-    padding:  0.5rem 1rem;
+    padding:  0.5rem 1.2rem;
     border: outset;
     border-width: 3px;
     box-shadow: #101010 3px 3px 3px;
@@ -93,7 +95,7 @@ body {
 }
 
 .misc_buttons {
-    background-color: rgb(185, 185, 185);
+    background-color: rgb(168, 168, 168);
     color: white;
     border-color: rgb(124, 124, 124);
     border-bottom-color: rgb(184, 184, 184);
@@ -117,7 +119,7 @@ body {
 }
 
 .operation {
-    background-color: rgb(185, 185, 185);
+    background-color:  rgb(168, 168, 168);
     color: white;
     border-color: rgb(124, 124, 124);
     border-bottom-color: rgb(184, 184, 184);
@@ -163,13 +165,11 @@ footer {
     text-align: right;
     position: fixed;
     bottom: 0;
-    left: 0;
-    padding: 0.1rem;
-    
+    left: 0;    
 }
 
 footer p {
-    padding-right: 1rem;
+    padding-right: 1em;
 }
 
 footer a {
@@ -189,47 +189,7 @@ and (min-device-width : 360px)
 and (max-device-width : 640px) {}   
 */
 
-/*----- iPhone 5S Landscape--*/
-/*@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px) 
-and (orientation : landscape) { 
 
-    body {
-        width: 100vw;
-        font-size: 1em;
-        height: 97vh;
-        
-    }
-    .container {
-        width: 90%;
-        height: 97vh;
-        
-    }
-    .calculator {
-        grid-auto-rows: 14%;
-        height: 80vh;
-        padding: 30px;
-        gap: 4%;
-        font-size: 1.11em;
-        
-    }
-    
-    .display {
-        font-size: 1em;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        padding: .9%;
-    }
-
-    #display {
-        font-size: 3em;
-    }
-    button {
-        height: 4rem;
-        width: 4rem;    
-    }
-}
 /*------- iPhone 5/5S---------*/
 @media screen 
 and (min-device-width : 320px) 
@@ -237,19 +197,19 @@ and (max-device-width : 568px) {
     body {
         width: 100%;
         font-size: 1em;
-        height: 97vh;
+        height: 100vh;
         
     }
     .container {
         width: 98%;
-        height: 94vh;
+        height: 90%;
         
     }
     .calculator {
-        grid-auto-rows: 12%;
-        height: 86vh;
-        padding: 40px;
-        gap: 5%;
+        grid-auto-rows: 13%;
+        height: 100%;
+        padding: 15px;
+        gap: 4%;
         font-size: 1.8em; 
     }
 
@@ -269,58 +229,61 @@ and (max-device-width : 568px) {
         width:10rem; 
              
     }
+
+    footer {
+        font-size: 1.5em;
+    }
 }
 
-
-/*----iPhone 6/7/8 Landscape --*/
-/*@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) 
+/*----- iPhone 5S Landscape--*/
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
 and (orientation : landscape) { 
+
     body {
         width: 100vw;
         font-size: 1em;
-        height: 98vh;
+        height: 100vh;
         
     }
     .container {
-        width: 97vw;
-        height: 80vh;
+        width: 95%;
+        height: 92%;
         
     }
     .calculator {
-        grid-auto-rows: 14%;
-        height: 99%;
-        padding: 20px;
-        padding-bottom: 28px;
-        gap: 4%;
+        grid-auto-rows: 13.2%;
+        height: 100%;
+        padding: 10px;
+        gap:3.85%;
         font-size: 1em;
         
     }
     
     .display {
-        font-size: 1rem;
+        font-size: 1.2em;
         grid-row-start: 1;
         grid-row-end: 2;
-        padding: .9%;
+        padding: .5%;
     }
 
     #display {
         font-size: 2em;
     }
     button {
-        height: 4.1rem;
-        width: 4.6rem;
-            
+        height: 5rem;
+        width: 5rem;    
     }
-
     footer {
-        font-size: .9rem;
+        visibility: hidden;
+        display: none;
     }
 }
 
+
 /*------- iPhone 6/7/8--------*/
-@media screen 
+/*@media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) { 
     body {
@@ -362,51 +325,94 @@ and (max-device-width : 667px) {
     }
 }
 
-/*------- iPhone 6/7/8 Plus Landscape--------*/
+/*----iPhone 6/7/8 Landscape --*/
 /*@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : landscape) { 
+    body {
+        width: 100vw;
+        font-size: 1em;
+        height: 100vh;
+        
+    }
+    .container {
+        width: 95%;
+        height: 85%;
+        
+    }
+    .calculator {
+        grid-auto-rows: 14%;
+        height: 100%;
+        padding: 30px;
+        gap:3.85%;
+        font-size: 1em;
+        
+    }
+    
+    .display {
+        font-size: 1.2em;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        padding: .5%;
+    }
+
+    #display {
+        font-size: 2em;
+    }
+    button {
+        height: 5rem;
+        width: 5rem;    
+    }
+    footer {
+        visibility: hidden;
+        display: none;
+    }
+}
+/*------- iPhone 6/7/8 Plus Landscape--------*/
+@media only screen 
 and (min-device-width : 414px) 
 and (max-device-width : 736px) 
 and (orientation : landscape) { 
     body {
         width: 100vw;
-        font-size: .8rem;
-        height: 98vh;
+       
+        height: 100vh;
         
     }
     .container {
-        width: 97vw;
-        height: 80vh;
+        width: 96%;
+        height: 87%;
         
     }
     .calculator {
-        grid-auto-rows: 14%;
-        height: 99%;
+        grid-auto-rows: 13%;
+        height: 100%;
         padding: 20px;
-        padding-bottom: 28px;
-        gap: 4%;
+        gap:3.85%;
+        font-size: 1em;
+        
     }
     
     .display {
-        font-size: 2.1rem;
+       
         grid-row-start: 1;
         grid-row-end: 2;
-        padding: .9%;
+        padding: .5%;
     }
 
     #display {
-        font-size: 2.1rem;
+        font-size: 2.5em;
     }
-    button {
-        height: 4.1rem;
-        width: 4.6rem;
-            
-    }
-
+    /* button {
+        height: 5rem;
+        width: 5rem;    
+    } */
     footer {
-        font-size: .9rem;
+        visibility: hidden;
+        display: none;
     }
 }
-
 
 /*------- iPhone 6/7/8 Plus--------*/
 /*--@media only screen 
@@ -423,46 +429,46 @@ and (-webkit-device-pixel-ratio : 3)
 and (orientation : landscape) { 
     body {
         width: 100vw;
-        font-size: .8rem;
+        font-size: 1em;
         height: 100vh;
         
     }
     .container {
-        width: 97vw;
-        height: 80vh;
+        width: 95%;
+        height: 90%;
         
     }
     .calculator {
-        grid-auto-rows: 14%;
-        height: 99%;
-        padding: 5%;
-        padding-bottom: 28px;
-        gap: 4%;
+        grid-auto-rows: 13%;
+        height: 100%;
+        padding: 15px;
+        gap:4.5%;
+        font-size: .7em;
+        
     }
     
     .display {
-        font-size: 2.1rem;
+        font-size: 1.2em;
         grid-row-start: 1;
         grid-row-end: 2;
-        padding: .9%;
+        padding: .4%;
     }
 
     #display {
-        font-size: 2.1rem;
+        font-size: 2em;
     }
     button {
-        height: 4.1rem;
-        width: 4.6rem;
-            
+        height: 4rem;
+        width: 4rem;    
     }
-
     footer {
-        font-size: .9rem;
+        visibility: hidden;
+        display: none;
     }
 }
 
 /*---iPhone X ----*/
-@media only screen 
+/*@media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 812px) 
 and (-webkit-device-pixel-ratio : 3) {
@@ -511,40 +517,40 @@ and (-webkit-device-pixel-ratio : 3) {
 @media screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { 
-    body {
+   body {
         width: 100vw;
-        font-size: 2rem;
-        height: 97vh;
+        height: 100vh;
         
     }
     .container {
-        width: 98%;
-        height: 82vh;
-        
+        width: 97%;
+        height: 92%;
         
     }
     .calculator {
-        grid-auto-rows: 12%;
-        gap:5.5%;
+        /* grid-auto-rows: 13%; */
         height: 100%;
-        padding: 40px;
-    }
+        font-size: 1.5rem;
+        /* padding: 10px;*/
+        gap:5%; 
 
+        
+    }
+    
     .display {
-        font-size: 3rem;
         grid-row-start: 1;
         grid-row-end: 2;
-        padding: 2%;
+        padding: .5%;
     }
 
     #display {
-        font-size: 5rem;
+        font-size: 4rem;
     }
-
     button {
-        height:9.5rem;
-        width:9.5rem;    
+        width: 7.5rem;
+        height: 7rem;
     }
+ 
 }
 
 
