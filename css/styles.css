@@ -41,7 +41,6 @@ body {
     border-bottom-color:rgb(23, 59, 70);
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(min-content, auto);
-    
     align-items: center;
     justify-items: center;
     height: 96%;
@@ -73,13 +72,10 @@ body {
     cursor: pointer;
     background-color: #f0f8ff;
     color: white;
-
     border-radius: 50%;
     border: outset;
     border-width: 3px;
-    box-shadow: #101010 3px 3px 3px;
-    vertical-align: middle;
-    display: inline-block;
+    box-shadow: #101010 3px 3px 3px; 
     font-family: 'Atomic Age', cursive;
     font-size: 2em;
     height: 2.5em;
@@ -149,13 +145,7 @@ body {
     background-color: rgb(180, 27, 0);
 }
 
-#zero {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    width: 60%;
-    border-radius: 40%;
-        
-}
+
 
 
 /* ------- FOOTER -------*/ 
@@ -346,7 +336,7 @@ and (orientation : landscape) {
              
     }
     .calculator {
-        font-size: .75em;
+        font-size: .7em;
         height: 95%;
         padding: .5%;
     }
