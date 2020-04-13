@@ -80,7 +80,11 @@ body {
     font-size: 2em;
     height: 2.5em;
     width: 2.5em;
-    text-decoration: none;    
+    text-decoration: none;
+    padding:0px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
 }
 
 .button:hover {
@@ -214,11 +218,11 @@ and (orientation : landscape) {
 
     .container {
         width: 98%;
-        height: 100%;      
+        height: 98%;      
     }
     .calculator {
         font-size: 1em;
-        height: 100%;
+        
         padding: .5%;
     }
 
@@ -283,11 +287,7 @@ and (orientation : landscape) {
         width: 98%;
         height: 100%;      
     }
-    .calculator {
-        font-size: 1em;
-        height: 100%;
-        padding: .5%;
-    }
+
     footer {
         visibility: hidden;
         display: none;
@@ -303,13 +303,8 @@ and (orientation : landscape) {
         width: 98%;
         height: 100%;      
     }
-    .calculator {
-        font-size: 1em;
-        height: 100%;
-        padding: .5%;
-    }
     .display {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     footer {
         visibility: hidden;
@@ -333,15 +328,13 @@ and (orientation : landscape) {
 
     .container {
         width: 98%;
-             
+        height: 90%;     
     }
     .calculator {
-        font-size: .7em;
-        height: 95%;
-        padding: .5%;
+        font-size: .8em;
     }
     .display {
-        font-size: 2.2em;
+        font-size: 2.7em;
     }
     footer {
         visibility: hidden;
