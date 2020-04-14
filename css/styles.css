@@ -64,6 +64,7 @@ body {
     color: rgb(28, 173, 137);
     border-style: inset;
     border-color: grey;
+    overflow: hidden;
 }
 
 

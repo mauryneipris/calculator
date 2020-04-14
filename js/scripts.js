@@ -49,7 +49,6 @@ const numbers = document.querySelectorAll("[data-key]");
 numbers.forEach((button) => button.addEventListener('click', (e) => {
     operators.forEach((button) => button.classList.remove('is_pressed'));
     let number = e.target.dataset.key;
-    console.log(number);
     numberPressed(number);
 }));
 
@@ -110,8 +109,11 @@ function clear() {
 
 function backspace() {
     if (display.textContent.length > 1) {
-        display.textContent = display.textContent.slice(0, -1);
+        display.textContent = display.textContent.slice(0, -1);      
+    } else if (display.textContent.length === 1) {
+        display.textContent = 0;       
     }
+    calculator.displayedNum = display.textContent;
 }
 
 function changeSign() {
@@ -145,7 +147,11 @@ function numberPressed(number) {
 
 function decimalPressed() {
     ac_to_ce()
-    if (calculator.previousKeyType === 'operator' || calculator.previousKeyType === 'calculate') {
+    if (calculator.previousKeyType === 'operator') {
+        operators.forEach((button) => button.classList.remove('is_pressed'));
+        calculator.displayedNum = 0 + '.';
+        display.textContent = calculator.displayedNum;
+    } else if (calculator.previousKeyType === 'calculate') {
         operators.forEach((button) => button.classList.remove('is_pressed'));
         calculator.displayedNum = 0 + '.';
         display.textContent = calculator.displayedNum;
